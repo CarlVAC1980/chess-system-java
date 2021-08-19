@@ -34,6 +34,12 @@ public class ChessMatch {
 		return (ChessPiece)capturedPiece;
 	}
 	
+	public boolean[][] possibleMoves(ChessPosition sourcePosition){
+		Position position = sourcePosition.toPosition();
+		validateSourcePosition(position);
+		return board.piece(position).possibleMoves();
+	}
+	
 	private Piece makeMove(Position source, Position target) {
 		Piece p = board.removePiece(source);
 		Piece capturedPiece = board.removePiece(target);
@@ -52,7 +58,7 @@ public class ChessMatch {
 	
 	private void validateTargetPostion(Position source, Position target) {
 		if(!board.piece(source).possibleMove(target)) {
-			throw new ChessException("Teh chosen piece can't move to target position.");
+			throw new ChessException("The chosen piece can't move to target position.");
 		}
 	}
 	
