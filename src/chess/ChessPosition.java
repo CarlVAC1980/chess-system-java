@@ -12,8 +12,7 @@ public class ChessPosition {
 			throw new ChessException("Error instantiating ChessPosition. Valid values are from a1 to h8.");
 		}
 		this.column = column;
-		this.row = row;
-		
+		this.row = row;		
 		
 	}
 
@@ -30,7 +29,7 @@ public class ChessPosition {
 	}
 	
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
+		return new ChessPosition((char)('a' + position.getColumn()), 8 - position.getRow());
 	}
 	
 	@Override
